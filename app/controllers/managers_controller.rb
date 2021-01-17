@@ -1,4 +1,5 @@
 class ManagersController < ApplicationController
+  skip_before_action :verified_manager, only: [:new, :create]
   
     def new
       @manager = Manager.new
