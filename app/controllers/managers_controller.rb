@@ -1,12 +1,12 @@
 class ManagersController < ApplicationController
-  skip_before_action :verified_manager, only: [:new, :create]
-  
+
     def new
       @manager = Manager.new
     end
   
     def create
-      if (manager = Manager.create(manager_params))
+      manager = Manager.create(manager_params)
+      if manager.save
         session[:manager_id] = manager.id
         redirect_to manager_path(manager)
       else
@@ -27,4 +27,4 @@ class ManagersController < ApplicationController
         :password,
       )
     end
-  end
+end

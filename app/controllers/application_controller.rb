@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
       !!current_manager
     end
   
-    def current_umanager
+    def current_manager
       Manager.find_by(id: session[:manager_id])
     end
   end
