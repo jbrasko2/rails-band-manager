@@ -25,6 +25,19 @@ class BandsController < ApplicationController
         end
     end
 
+    def edit
+        @band = current_manager.bands.find_by(id: params[:id])
+        if !@band
+            redirect_to bands_path
+        end
+    end
+
+    def update
+        @band = current_manager.bands.find_by(id: params[:id])
+        @band.update(band_params)
+        redirect_to band_path
+    end
+
     private
 
     def band_params
