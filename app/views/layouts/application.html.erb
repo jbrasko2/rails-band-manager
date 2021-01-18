@@ -11,6 +11,14 @@
   </head>
 
   <body>
+    <% if !current_manager %>
+      <a class="navbar-brand" href="<%= new_manager_path %>"/>Sign Up</a>
+      <%= link_to "Log in", signin_path, class:"navbar-brand" %>
+    <% end %>
+    <% if current_manager %>
+      <%= link_to "#{current_manager.username}'s profile", manager_path(current_manager), class:"navbar-brand"%>
+      <%= link_to "Log Out", session_path, class:"navbar-brand",method:'delete' %>
+    <% end %>  
     <%= yield %>
   </body>
 </html>

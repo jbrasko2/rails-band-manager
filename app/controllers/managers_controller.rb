@@ -10,21 +10,21 @@ class ManagersController < ApplicationController
       session[:manager_id] = @manager.id
       redirect_to manager_path(@manager)
     else
-      render 'new'
+      render :new
     end
   end
 
   def show
-    @manager = Manager.find_by(id: session[:manager_id])
+    @manager = current_manager
     @bands = @manager.bands
   end
 
   def edit
-    @manager = Manager.find_by(id: session[:manager_id])
+    @manager = current_manager
   end
 
   def update
-    @manager = Manager.find_by(id: session[:manager_id])
+    @manager = current_manager
     @manager.update(manager_params)
     if @manager.save
       redirect_to manager_path
