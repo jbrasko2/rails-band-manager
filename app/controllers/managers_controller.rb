@@ -1,4 +1,5 @@
 class ManagersController < ApplicationController
+  skip_before_action :verified_manager, only: [:new, :create]
 
   def new
     @manager = Manager.new
@@ -31,6 +32,10 @@ class ManagersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def index
+    @managers = Manager.all
   end
 
   private
