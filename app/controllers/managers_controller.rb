@@ -19,6 +19,20 @@ class ManagersController < ApplicationController
     @bands = @manager.bands
   end
 
+  def edit
+    @manager = Manager.find_by(id: session[:manager_id])
+  end
+
+  def update
+    @manager = Manager.find_by(id: session[:manager_id])
+    @manager.update(manager_params)
+    if @manager.save
+      redirect_to manager_path
+    else
+      render :edit
+    end
+  end
+
   private
 
   def manager_params
