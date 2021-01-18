@@ -15,7 +15,7 @@ class ManagersController < ApplicationController
   end
 
   def show
-    @manager = Manager.find_by(id: params[:id])
+    @manager = Manager.find_by(id: session[:manager_id])
     @bands = @manager.bands
   end
 
