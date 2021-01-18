@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Manager.create(username: 'tony123', email: 'tony@example.com', password: 'thisistony')
+Manager.create(username: 'jon123', email: 'jon@example.com', password: 'thisisjon')
+Manager.create(username: 'billy123', email: 'billy@example.com', password: 'thisisbilly')
+
+Band.create(name: 'The Fuzz', manager_id: 1)
+Band.create(name: 'Big Sneeze', manager_id: 1)
+Band.create(name: 'The Warm Chickens', manager_id: 1)
+Band.create(name: 'The Squish', manager_id: 2)
+Band.create(name: 'Pollies', manager_id: 2)
+Band.create(name: 'The Police', manager_id: 3)
+Band.create(name: 'Young Swiss', manager_id: 3)
+Band.create(name: 'The Holy Mackerel', manager_id: 3)
