@@ -6,11 +6,12 @@ class SessionController < ApplicationController
     end
 
     def create
-        if @manager = Manager.find_by(username: params[:username])
+        @manager = Manager.find_by(username: params[:username])
+        if @manager && @manager.authenticate(params[:password])
             session[:manager_id] = @manager.id
             redirect_to manager_path(@manager)
         else
-            render :new
+            redirect_to '/signin'
         end
     end
 
