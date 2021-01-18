@@ -1,7 +1,7 @@
-<%= form_tag('/session') do %>
-    <%= label_tag(:username, "Username: ") %>
-    <%= text_field_tag(:username) %>
-    <%= label_tag(:password, "Password: ") %>
-    <%= password_field_tag(:password, nil) %>
-    <%= submit_tag("Sign In") %>
+<%= form_for @manager, url: signin_path, method: :post do |f| %>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <%= f.submit "Sign In" %>
 <% end %>
