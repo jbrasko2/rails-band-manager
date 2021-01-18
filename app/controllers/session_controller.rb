@@ -6,7 +6,7 @@ class SessionController < ApplicationController
     end
 
     def create
-        if @manager = Manager.find_by(username: params[:manager][:username])
+        if @manager = Manager.find_by(username: params[:username])
             session[:manager_id] = @manager.id
             redirect_to manager_path(@manager)
         else
