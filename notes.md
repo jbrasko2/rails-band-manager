@@ -19,6 +19,7 @@ Band
 BandMember
 	belongs_to :band
 	belongs_to :member
+	- instrument
 	- band_id
 	- member_id
 
@@ -26,4 +27,3 @@ Member
 	has_many :band_members
 	has_many :bands, through: :band_members
 	- name
-	- instrument

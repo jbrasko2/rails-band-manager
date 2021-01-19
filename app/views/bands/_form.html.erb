@@ -1,5 +1,27 @@
 <%= form_for @band do |f| %>
+  <% if @band.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@band.errors.count, "error") %> prohibited this band from being saved:
+      </h2>
+
+      <ul>
+      <% @band.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
     <%= f.label "Name: " %>
     <%= f.text_field :name %>
+
+    <%= f.fields_for :band_members, @band.band_members.build do |ff| %>
+        <%= ff.label :instrument %>
+        <%= ff.text_field :instrument %>
+        <%= ff.fields_for :members, @band.members.build do |fff| %>
+            <%= fff.label :name %>
+            <%= fff.text_field :name %>
+        <% end %>
+    <% end %>
     <%= f.submit %>
 <% end %>

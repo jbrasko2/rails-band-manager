@@ -2,6 +2,7 @@ class BandsController < ApplicationController
 
     def index
         @bands = current_manager.bands
+        4.times 
     end
 
     def show
@@ -17,6 +18,7 @@ class BandsController < ApplicationController
 
     def create
         @band = current_manager.bands.build(band_params)
+
 
         if @band.save
             redirect_to bands_path
@@ -47,6 +49,6 @@ class BandsController < ApplicationController
     private
 
     def band_params
-        params.require(:band).permit(:name, :manager_id)
+        params.require(:band).permit(:name, :manager_id, band_members_attributes:[:instrument])
     end
 end

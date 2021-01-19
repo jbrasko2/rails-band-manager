@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_01_17_192202) do
 
   create_table "band_members", force: :cascade do |t|
+    t.string "instrument"
     t.integer "band_id", null: false
     t.integer "member_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -41,7 +42,6 @@ ActiveRecord::Schema.define(version: 2021_01_17_192202) do
 
   create_table "members", force: :cascade do |t|
     t.string "name"
-    t.string "instrument"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

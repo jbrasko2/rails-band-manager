@@ -18,3 +18,5 @@ Band.create(name: 'Pollies', manager_id: 2)
 Band.create(name: 'The Police', manager_id: 3)
 Band.create(name: 'Young Swiss', manager_id: 3)
 Band.create(name: 'The Holy Mackerel', manager_id: 3)
+Band.create(name: 'Snowboy', manager_id: 3)
+

@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   root 'static#home'
   resources :managers, only: [:new, :edit, :show, :destroy, :create]
   resources :bands
-
+  resources :members
+  
   get '/signin', to: 'session#new'
   post '/signin', to: 'session#create'
   delete '/session/', to: 'session#destroy'
