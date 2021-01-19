@@ -38,6 +38,12 @@ class ManagersController < ApplicationController
     @managers = Manager.all
   end
 
+  def destroy
+    @manager = current_manager
+    @manager.destroy
+    redirect_to root_path
+  end
+
   private
 
   def manager_params

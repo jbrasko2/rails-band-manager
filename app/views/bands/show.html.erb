@@ -1,1 +1,4 @@
 <h1><%= @band.name %></h1>
+<br>
+<%= link_to "Edit", edit_band_path(@band) %>
+<%= link_to 'Delete', band_path(@band), method: :delete, data: { confirm: "Are you sure?" }%>

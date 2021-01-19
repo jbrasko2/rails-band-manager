@@ -38,6 +38,12 @@ class BandsController < ApplicationController
         redirect_to band_path
     end
 
+    def destroy
+        @band = current_manager.bands.find_by(id: params[:id])
+        @band.destroy
+        redirect_to manager_path(current_manager)
+    end
+
     private
 
     def band_params

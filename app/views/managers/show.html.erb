@@ -6,3 +6,5 @@
 <% end %>
 <br>
 <%= link_to "Add New Band", new_band_path %>
+<%= link_to "Delete Account", manager_path(@manager), method: :delete, data: { confirm: "Are you sure you want to delete your account?"} %>
+
