@@ -12,11 +12,30 @@ Manager.create(username: 'billy123', email: 'billy@example.com', password: 'this
 
 Band.create(name: 'The Fuzz', manager_id: 1)
 Band.create(name: 'Big Sneeze', manager_id: 1)
-Band.create(name: 'The Warm Chickens', manager_id: 1)
+Band.create(name: 'The Wet Sprockets', manager_id: 1)
 Band.create(name: 'The Squish', manager_id: 2)
 Band.create(name: 'Pollies', manager_id: 2)
 Band.create(name: 'The Police', manager_id: 3)
 Band.create(name: 'Young Swiss', manager_id: 3)
 Band.create(name: 'The Holy Mackerel', manager_id: 3)
 Band.create(name: 'Snowboy', manager_id: 3)
+Band.create(name: 'The Surfaris', manager_id: 2)
 
+Member.create(name: "Johnny Rockets")
+Member.create(name: "Bill Buffalo")
+Member.create(name: "Ricky Nixon")
+Member.create(name: "Troy Simpson")
+Member.create(name: "Mary Berry")
+Member.create(name: "Billy Riches")
+Member.create(name: "Pappy McGoo")
+Member.create(name: "Chevy Chase")
+Member.create(name: "Trent Razor")
+Member.create(name: "Scuba Steve")
+
+100.times do
+    BandMember.create({
+        instrument: Faker::Music.instrument,
+        band_id: rand(1..10),
+        member_id: rand(1..10)
+    })
+end

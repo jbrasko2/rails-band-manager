@@ -18,7 +18,13 @@
     <% if current_manager %>
       <%= link_to "#{current_manager.username}'s profile", manager_path(current_manager), class:"navbar-brand"%>
       <%= link_to "Log Out", session_path, class:"navbar-brand",method:'delete' %>
-    <% end %>  
+    <% end %>
+
+    <% if !!flash[:message] %>
+      <br><br>
+      <%= flash[:message] %><br><br>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

@@ -1,6 +1,5 @@
 class BandMember < ApplicationRecord
   belongs_to :band
   belongs_to :member
-  accepts_nested_attributes_for :member
-  validates :instrument, presence: true
+  validates_uniqueness_of :member_id, scope: :band_id
 end

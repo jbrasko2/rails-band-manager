@@ -1,27 +1,19 @@
+<%= render partial: 'errors', locals: {model: @band} %>
+<br><br>
 <%= form_for @band do |f| %>
-  <% if @band.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@band.errors.count, "error") %> prohibited this band from being saved:
-      </h2>
-
-      <ul>
-      <% @band.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
     <%= f.label "Name: " %>
     <%= f.text_field :name %>
+    
 
-    <%= f.fields_for :band_members, @band.band_members.build do |ff| %>
-        <%= ff.label :instrument %>
-        <%= ff.text_field :instrument %>
-        <%= ff.fields_for :members, @band.members.build do |fff| %>
-            <%= fff.label :name %>
-            <%= fff.text_field :name %>
-        <% end %>
+    <h3>Choose Band Members: </h3>
+    <%= f.collection_check_boxes :member_ids, Member.all, :id, :name %>
+    <br><br>
+
+    <%= f.fields_for :members, @band.members.build do |members_fields| %>
+        <%= members_fields.label :name, "New Band Member" %>
+        <%= members_fields.text_field :name %>
+        <br><br>
     <% end %>
+
     <%= f.submit %>
 <% end %>

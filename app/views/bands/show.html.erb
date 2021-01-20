@@ -1,9 +1,10 @@
 <h1><%= @band.name %></h1>
 <ul>
-    <% @band.members do |member| %>
-        <li><%= member.name %></li>
+    <% @band.members.each do |member| %>
+        <li><%= link_to member.name, member_path(member) %> - <%= get_instrument(member, @band) %></li>
     <% end %>
 </ul>
 <br>
 <%= link_to "Edit", edit_band_path(@band) %>
+<br><br>
 <%= link_to 'Delete', band_path(@band), method: :delete, data: { confirm: "Are you sure?" }%>

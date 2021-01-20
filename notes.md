@@ -8,7 +8,6 @@ Manager
 	- uid
 	- provider
 
-
 Band
 	belongs_to :manager
 	has_many :band_members

@@ -1,0 +1,19 @@
+<h1><%= @member.name %>'s Bands:</h1>
+<br>
+<h3>Managed by You</h3>
+<ul>
+    <% @member.bands.each do |band| %>
+        <% if current_manager.bands.include?(band) %>
+            <li><%= link_to band.name, band_path(band) %> - <%= get_instrument(@member, band) %></li>
+        <% end %>
+    <% end %>
+</ul>
+<br>
+<h3>Managed by Others</h3>
+<ul>
+    <% @member.bands.each do |band| %>
+        <% if !current_manager.bands.include?(band) %>
+            <li><%= band.name %> - <%= get_instrument(@member, band) %></li>
+        <% end %>
+    <% end %>
+</ul>

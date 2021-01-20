@@ -2,12 +2,12 @@ class BandsController < ApplicationController
 
     def index
         @bands = current_manager.bands
-        4.times 
     end
 
     def show
         @band = current_manager.bands.find_by(id: params[:id])
         if !@band
+            flash[:message] = "Access Denied. This band is managed by someone else."
             redirect_to manager_path(current_manager)
         end
     end
@@ -21,7 +21,7 @@ class BandsController < ApplicationController
 
 
         if @band.save
-            redirect_to bands_path
+            redirect_to manager_path(current_manager)
         else
             render :new
         end
@@ -49,6 +49,6 @@ class BandsController < ApplicationController
     private
 
     def band_params
-        params.require(:band).permit(:name, :manager_id, band_members_attributes:[:instrument])
+        params.require(:band).permit(:name, :manager_id, member_ids:[], members_attributes: [:name])
     end
 end
