@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'static#home'
 
   resources :managers, only: [:new, :edit, :show, :destroy, :create] do
-    resources :bands, only: [:show]
+    resources :bands, only: [:new, :show]
   end
 
   resources :bands

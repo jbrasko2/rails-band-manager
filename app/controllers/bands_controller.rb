@@ -37,7 +37,11 @@ class BandsController < ApplicationController
     def update
         @band = current_manager.bands.find_by(id: params[:id])
         @band.update(band_params)
-        redirect_to band_path
+        if @band.save
+            redirect_to band_path
+        else
+            render :edit
+        end
     end
 
     def destroy

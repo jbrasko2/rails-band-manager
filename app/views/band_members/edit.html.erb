@@ -1,6 +1,7 @@
-<h1><%= @member.name %></h1>
+<h1><%= @band_member.member.name %></h1>
 <br>
 <%= form_for @band_member do |f| %>
+<%= render partial: 'bands/errors', locals: {model: @band_member} %>
     <%= f.label :instrument %>
     <%= f.text_field :instrument %>
     <%= f.submit "Update Instrument" %>
