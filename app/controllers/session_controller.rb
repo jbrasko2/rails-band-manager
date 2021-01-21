@@ -1,5 +1,5 @@
 class SessionController < ApplicationController
-    skip_before_action :verified_manager, only: [:new, :create]
+    before_action :verified_manager, only: [:destroy]
 
     def new
         @manager = Manager.new
@@ -7,7 +7,7 @@ class SessionController < ApplicationController
 
     def create
         manager = Manager.find_by(username: params[:session][:username])
-        if manager && manager.authenticate(params[:session][:password])
+        if manager.valid?
             session[:manager_id] = manager.id
             redirect_to manager_path(manager)
         else
@@ -16,8 +16,25 @@ class SessionController < ApplicationController
         end
     end
 
+    def omniauth
+
+        manager = Manager.create_from_omniauth(auth)
+        if manager.valid?
+            session[:manager_id] = manager.id
+            redirect_to manager_path(manager)
+        else
+            redirect_to root_path
+        end
+    end
+
     def destroy
         session.delete("manager_id")
         redirect_to root_path
+    end
+
+    private
+
+    def auth
+        request.env['omniauth.auth']
     end
 end

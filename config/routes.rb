@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :bands
   resources :members
   
+  get '/auth/:provider/callback', to: "session#omniauth"
   get '/signin', to: 'session#new'
   post '/signin', to: 'session#create'
   delete '/session/', to: 'session#destroy'
