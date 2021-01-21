@@ -1,7 +1,7 @@
 <h1>Bands You Manage: </h1>
 <ul>
 <% @bands.each do |band| %>
-    <li><%= link_to band.name, band_path(band) %></li>
+    <li><%= link_to band.name, manager_band_path(band) %></li>
 <% end %>
 <br>
 <%= link_to "Add New Band", new_band_path %>

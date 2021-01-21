@@ -1,7 +1,8 @@
 <h1><%= @band.name %></h1>
 <ul>
     <% @band.members.each do |member| %>
-        <li><%= link_to member.name, member_path(member) %> - <%= get_instrument(member, @band) %></li>
+        <li><%= link_to member.name, member_path(member) %> - <%= get_band_member(member, @band).instrument %></li>
+        <%= link_to "Choose Instrument", edit_band_member_path(get_band_member(member, @band)) %>
     <% end %>
 </ul>
 <br>

@@ -1,0 +1,7 @@
+<h1><%= @member.name %></h1>
+<br>
+<%= form_for @band_member do |f| %>
+    <%= f.label :instrument %>
+    <%= f.text_field :instrument %>
+    <%= f.submit "Update Instrument" %>
+<% end %>
