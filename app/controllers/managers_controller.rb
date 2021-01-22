@@ -17,7 +17,7 @@ class ManagersController < ApplicationController
 
   def show
     @manager = current_manager
-    @bands = @manager.bands
+    @bands = @manager.bands.ordered_by_name
   end
 
   def edit

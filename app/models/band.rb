@@ -4,6 +4,7 @@ class Band < ApplicationRecord
   has_many :members, through: :band_members
   validates :name, presence: true
   validates :name, uniqueness: true
+  scope :ordered_by_name, -> { order(name: :asc) }
 
   def members_attributes=(member_attributes)
     member_attributes.values.each do |member_attribute|

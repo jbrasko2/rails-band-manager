@@ -1,7 +1,7 @@
 class BandsController < ApplicationController
 
     def index
-        @bands = current_manager.bands
+        @bands = current_manager.bands.ordered_by_name
     end
 
     def show
