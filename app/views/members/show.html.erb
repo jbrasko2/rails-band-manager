@@ -3,7 +3,7 @@
 <h3>Managed by You</h3>
 <ul>
     <% @member.bands.each do |band| %>
-        <% if current_manager.bands.include?(band) %>
+        <% if manager_bands.include?(band) %>
             <li><%= link_to band.name, band_path(band) %> - <%= get_band_member(@member, band).instrument %></li>
         <% end %>
     <% end %>
@@ -12,7 +12,7 @@
 <h3>Managed by Others</h3>
 <ul>
     <% @member.bands.each do |band| %>
-        <% if !current_manager.bands.include?(band) %>
+        <% if !manager_bands.include?(band) %>
             <li><%= band.name %> - <%= get_band_member(@member, band).instrument %></li>
         <% end %>
     <% end %>
