@@ -1,10 +1,8 @@
-<h1>Bands You Manage: </h1>
-<ul>
-<% @bands.each do |band| %>
-    <li><%= link_to band.name, manager_band_path(current_manager, band) %></li>
-<% end %>
+<h1><%= @manager.username %>'s Profile </h1>
 <br>
-<%= link_to "Add New Band", new_manager_band_path(@manager) %>
-<br><br>
+<%= link_to "View Your Bands", bands_path %>
+<br>
+<%= link_to "Edit Account", edit_manager_path(@manager) %>
+<br>
 <%= link_to "Delete Account", manager_path(@manager), method: :delete, data: { confirm: "Are you sure you want to delete your account?"} %>
 

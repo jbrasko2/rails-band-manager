@@ -2,13 +2,14 @@ class BandsController < ApplicationController
     before_action :get_band, only: [:show, :edit, :update, :destroy]
 
     def index
+        @manager = current_manager
         @bands = manager_bands.ordered_by_name
     end
 
     def show
         if !@band
             flash[:message] = "Access Denied. This band is managed by someone else."
-            redirect_to manager_path(current_manager)
+            redirect_to bands_path
         end
     end
 
@@ -27,9 +28,6 @@ class BandsController < ApplicationController
     end
 
     def edit
-        if !@band
-            redirect_to bands_path
-        end
     end
 
     def update

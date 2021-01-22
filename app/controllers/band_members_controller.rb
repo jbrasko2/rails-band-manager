@@ -1,12 +1,11 @@
 class BandMembersController < ApplicationController
+    before_action :get_band_member
 
     def edit
-        @band_member = BandMember.find_by(id: params[:id])
         @member = Member.find_by(id: @band_member.member_id)
     end
 
     def update
-        @band_member = BandMember.find_by(id: params[:id])
         @band_member.update(band_member_params)
         if @band_member.save
             redirect_to band_path(@band_member.band)
@@ -21,4 +20,7 @@ class BandMembersController < ApplicationController
         params.require(:band_member).permit(:instrument)
     end
 
+    def get_band_member
+        @band_member = BandMember.find_by(id: params[:id])
+    end
 end
