@@ -21,7 +21,7 @@ class BandsController < ApplicationController
         @band = manager_bands.build(band_params)
 
         if @band.save
-            redirect_to manager_path(current_manager)
+            redirect_to band_path
         else
             render :new
         end
@@ -41,7 +41,7 @@ class BandsController < ApplicationController
 
     def destroy
         @band.destroy
-        redirect_to manager_path(current_manager)
+        redirect_to bands_path
     end
 
     private
