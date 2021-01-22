@@ -19,7 +19,6 @@ class BandsController < ApplicationController
     def create
         @band = manager_bands.build(band_params)
 
-
         if @band.save
             redirect_to manager_path(current_manager)
         else

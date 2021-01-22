@@ -1,5 +1,6 @@
 class ManagersController < ApplicationController
   skip_before_action :verified_manager, only: [:new, :create]
+  before_action :get_manager, only: [:show, :edit, :update, :destroy]
 
   def new
     @manager = Manager.new
@@ -16,16 +17,13 @@ class ManagersController < ApplicationController
   end
 
   def show
-    @manager = current_manager
     @bands = @manager.bands.ordered_by_name
   end
 
   def edit
-    @manager = current_manager
   end
 
   def update
-    @manager = current_manager
     @manager.update(manager_params)
     if @manager.save
       redirect_to manager_path
@@ -39,7 +37,6 @@ class ManagersController < ApplicationController
   end
 
   def destroy
-    @manager = current_manager
     @manager.destroy
     redirect_to root_path
   end
@@ -52,5 +49,9 @@ class ManagersController < ApplicationController
       :email,
       :password,
     )
+  end
+
+  def get_manager
+    @manager = current_manager
   end
 end

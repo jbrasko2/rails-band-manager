@@ -1,4 +1,7 @@
-<h1><%= @band_member.member.name %></h1>
+<p>
+    Choose an instrument for <strong><%= @band_member.member.name %> </strong>
+    to play in <strong><%= @band_member.band.name %></strong>.
+</p>
 <br>
 <%= form_for @band_member do |f| %>
 <%= render partial: 'bands/errors', locals: {model: @band_member} %>
