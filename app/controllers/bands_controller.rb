@@ -1,11 +1,11 @@
 class BandsController < ApplicationController
+    before_action :get_band, only: [:show, :edit, :update, :destroy]
 
     def index
-        @bands = current_manager.bands.ordered_by_name
+        @bands = manager_bands.ordered_by_name
     end
 
     def show
-        @band = current_manager.bands.find_by(id: params[:id])
         if !@band
             flash[:message] = "Access Denied. This band is managed by someone else."
             redirect_to manager_path(current_manager)
@@ -17,7 +17,7 @@ class BandsController < ApplicationController
     end
 
     def create
-        @band = current_manager.bands.build(band_params)
+        @band = manager_bands.build(band_params)
 
 
         if @band.save
@@ -28,14 +28,12 @@ class BandsController < ApplicationController
     end
 
     def edit
-        @band = current_manager.bands.find_by(id: params[:id])
         if !@band
             redirect_to bands_path
         end
     end
 
     def update
-        @band = current_manager.bands.find_by(id: params[:id])
         @band.update(band_params)
         if @band.save
             redirect_to band_path
@@ -45,7 +43,6 @@ class BandsController < ApplicationController
     end
 
     def destroy
-        @band = current_manager.bands.find_by(id: params[:id])
         @band.destroy
         redirect_to manager_path(current_manager)
     end
@@ -54,5 +51,9 @@ class BandsController < ApplicationController
 
     def band_params
         params.require(:band).permit(:name, :manager_id, member_ids:[], members_attributes: [:name])
+    end
+
+    def get_band
+        @band = manager_bands.find_by(id: params[:id])
     end
 end
