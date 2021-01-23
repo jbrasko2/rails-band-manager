@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root 'static#home'
 
-  resources :managers, only: [:new, :edit, :show, :destroy, :create] do
-    resources :bands, only: [:new, :show]
+  resources :managers, except: :index do
+    resources :bands, only: [:new, :show, :index]
   end
 
   resources :bands

@@ -8,7 +8,7 @@ class BandsController < ApplicationController
 
     def show
         if !@band
-            flash[:message] = "Access Denied. This band is managed by someone else."
+            flash[:message] = "Access Denied. That band is managed by someone else."
             redirect_to bands_path
         end
     end

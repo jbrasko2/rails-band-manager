@@ -1,6 +1,6 @@
 <h1><%= @manager.username %>'s Profile </h1>
 <br>
-<%= link_to "View Your Bands", bands_path %>
+<%= link_to "View Your Bands", manager_bands_path(@manager) %>
 <br>
 <%= link_to "Edit Account", edit_manager_path(@manager) %>
 <br>

@@ -1,7 +1,7 @@
 class Manager < ApplicationRecord
     has_secure_password
     has_many :bands, dependent: :destroy
-    validates :email, :username, presence: true
+    validates :email, :username, :password, presence: true
     validates :email, :username, uniqueness: true
 
     def self.create_from_omniauth(auth)
