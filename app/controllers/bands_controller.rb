@@ -21,7 +21,7 @@ class BandsController < ApplicationController
         @band = manager_bands.build(band_params)
 
         if @band.save
-            redirect_to band_path
+            redirect_to band_path(@band)
         else
             render :new
         end
@@ -33,7 +33,7 @@ class BandsController < ApplicationController
     def update
         @band.update(band_params)
         if @band.save
-            redirect_to band_path
+            redirect_to band_path(@band)
         else
             render :edit
         end
