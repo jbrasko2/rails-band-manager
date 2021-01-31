@@ -6,8 +6,7 @@ class BandMembersController < ApplicationController
     end
 
     def update
-        @band_member.update(band_member_params)
-        if @band_member.save
+        if @band_member.update(band_member_params)
             redirect_to band_path(@band_member.band)
         else
             render :edit

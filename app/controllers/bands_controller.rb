@@ -31,8 +31,7 @@ class BandsController < ApplicationController
     end
 
     def update
-        @band.update(band_params)
-        if @band.save
+        if @band.update(band_params)
             redirect_to band_path(@band)
         else
             render :edit

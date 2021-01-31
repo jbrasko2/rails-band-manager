@@ -24,8 +24,7 @@ class ManagersController < ApplicationController
   end
 
   def update
-    @manager.update(manager_params)
-    if @manager.save
+    if @manager.update(manager_params)
       redirect_to manager_path
     else
       render :edit
