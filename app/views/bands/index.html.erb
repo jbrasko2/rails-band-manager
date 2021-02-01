@@ -1,4 +1,9 @@
 <h1>Bands You Manage: </h1>
+<h3>Search by Band</h3>
+    <%= form_tag(manager_bands_path(current_manager), method: :get) do %>
+        <%= text_field_tag(:name, params[:name]) %>
+        <%= submit_tag ("Search") %>
+    <% end %>
 <ul>
 <% @bands.each do |band| %>
     <li><%= link_to band.name, manager_band_path(current_manager, band) %></li>

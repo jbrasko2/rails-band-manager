@@ -7,7 +7,7 @@ class ManagersController < ApplicationController
   end
 
   def create
-    @manager = Manager.create(manager_params)
+    @manager = Manager.new(manager_params)
     if @manager.save
       session[:manager_id] = @manager.id
       redirect_to manager_path(@manager)
