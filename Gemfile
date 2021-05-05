@@ -8,8 +8,7 @@ gem 'faker'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'jekyll'
-gem 'github-pages'
+
 
 
 
