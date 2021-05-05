@@ -16,15 +16,6 @@ class Band < ApplicationRecord
   end
 
   def self.search(search)
-    if search
-      band = Band.find_by(name: search)
-      if band
-        self.where(id: band)
-      else
-        Band.all
-      end
-    else
-      Band.all
-    end
+    self.where(name: search)
   end
 end

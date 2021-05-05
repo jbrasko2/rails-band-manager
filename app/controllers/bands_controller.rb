@@ -3,8 +3,11 @@ class BandsController < ApplicationController
 
     def index
         @manager = current_manager
-        @bands = manager_bands.search(params[:name])
-
+        if params[:name]
+            @bands = manager_bands.search(params[:name])
+        else 
+        @bands = current_manager.bands
+        end
     end
 
     def show
